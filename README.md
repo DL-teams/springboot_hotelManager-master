@@ -1,5 +1,3 @@
-**需要完整代码可以加qq   931708230 或者加微信   ynwwxid**
-**需要完整代码可以加qq   931708230 或者加微信   ynwwxid**
 基于springboot的酒店预订管理系统，java项目
 主要技术：springboot，java，mysql，mybatis
 推荐环境配置：idea jdk1.8 maven3.6 mysql（需要远程可私聊）
@@ -53,6 +51,3 @@ http://localhost:8088/admin/login
 ![contents](./picture/picture6.png)
 
 ![contents](./picture/picture7.png)
-
-**需要完整代码可以加qq   931708230 或者加微信   ynwwxid**
-**需要完整代码可以加qq   931708230 或者加微信   ynwwxid**
