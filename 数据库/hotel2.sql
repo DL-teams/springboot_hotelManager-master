@@ -459,10 +459,20 @@ CREATE TABLE `wifi` (
   `wifi_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'WIFI编号',
   `wifi_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'WIFI名称',
   `wifi_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'WIFI密码',
-  `wifi_create_time` datetime DEFAULT NULL,
-  `wifi_last_modify_time` datetime DEFAULT NULL,
+  `wifi_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `wifi_last_modify_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`wifi_id`) USING BTREE
 ) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
+-- wifi: announcement
+DROP TABLE IF EXISTS `announcement`;
+CREATE TABLE `announcement` (
+  `announcement_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '公告编号',
+  `announcement_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告内容',
+  `announcement_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `announcement_last_modify_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`announcement_id`) USING BTREE
+) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
+INSERT INTO `announcement` (announcement_value, announcement_create_time, announcement_last_modify_time) VALUES ('', '2022-08-13 12:11:51', '2022-08-13 12:12:18');
 SET FOREIGN_KEY_CHECKS = 1;
