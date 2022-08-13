@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.hotel.modular.hotel.dao.WifiMapper" >
+  <resultMap id="BaseResultMap" type="com.example.hotel.modular.hotel.model.Wifi" >
+    <id column="wifi_id" property="wifiId" jdbcType="BIGINT" />
+    <result column="wifi_name" property="wifiName" jdbcType="VARCHAR" />
+    <result column="wifi_password" property="wifiPassword" jdbcType="VARCHAR" />
+    <result column="wifi_create_time" property="wifiCreateTime" jdbcType="TIMESTAMP" />
+    <result column="wifi_last_modify_time" property="wifiLastModifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    wifi_id, wifi_name, wifi_password, wifi_create_time, wifi_last_modify_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select
+    <include refid="Base_Column_List" />
+    from wifi
+    where wifi_id = #{wifiId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from wifi
+    where wifi_id = #{wifiId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.example.hotel.modular.hotel.model.Wifi" >
+    insert into wifi (wifi_id, wifi_name, wifi_password,
+      wifi_create_time, wifi_last_modify_time)
+    values (#{wifiId,jdbcType=BIGINT}, #{wifiName,jdbcType=VARCHAR}, #{wifiPassword,jdbcType=VARCHAR},
+      #{wifiCreateTime,jdbcType=TIMESTAMP}, #{wifiLastModifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.hotel.modular.hotel.model.Wifi" >
+    insert into wifi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="wifiId != null" >
+        wifi_id,
+      </if>
+      <if test="wifiName != null" >
+        wifi_name,
+      </if>
+      <if test="wifiPassword != null" >
+        wifi_password,
+      </if>
+      <if test="wifiCreateTime != null" >
+        wifi_create_time,
+      </if>
+      <if test="wifiLastModifyTime != null" >
+        wifi_last_modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="wifiId != null" >
+        #{wifiId,jdbcType=BIGINT},
+      </if>
+      <if test="wifiName != null" >
+        #{wifiName,jdbcType=VARCHAR},
+      </if>
+      <if test="wifiPassword != null" >
+        #{wifiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="wifiCreateTime != null" >
+        #{wifiCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wifiLastModifyTime != null" >
+        #{wifiLastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.hotel.modular.hotel.model.Wifi" >
+    update wifi
+    <set >
+      <if test="wifiName != null" >
+        wifi_name = #{wifiName,jdbcType=VARCHAR},
+      </if>
+      <if test="wifiPassword != null" >
+        wifi_password = #{wifiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="wifiCreateTime != null" >
+        wifi_create_time = #{wifiCreateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wifiLastModifyTime != null" >
+        wifi_last_modify_time = #{wifiLastModifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where wifi_id = #{wifiId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.hotel.modular.hotel.model.Wifi" >
+    update wifi
+    set wifi_name = #{wifiName,jdbcType=VARCHAR},
+      wifi_password = #{wifiPassword,jdbcType=VARCHAR},
+      wifi_create_time = #{wifiCreateTime,jdbcType=TIMESTAMP},
+      wifi_last_modify_time = #{wifiLastModifyTime,jdbcType=TIMESTAMP}
+    where wifi_id = #{wifiId,jdbcType=BIGINT}
+  </update>
+
+  <select id="selectWifiList" resultMap="BaseResultMap">
+        select
+          wifi_id wifiId,
+          wifi_name wifiName,
+          wifi_create_time wifiCreateTime
+        from
+          wifi
+        order by
+          wifiCreateTime
+        desc
+    </select>
+
+  <select id="getTotalWifi" resultType="int">
+    select count(1) from wifi
+    </select>
+</mapper>

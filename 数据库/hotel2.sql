@@ -452,4 +452,17 @@ CREATE TABLE `user`  (
 -- ----------------------------
 INSERT INTO `user` VALUES (155479343250980, 'admin', 'ba3873f74a5b46a4f93816721dad7345', '13515107277', 1, '2019-10-28 13:52:48', '2021-05-14 14:49:57', '超级管理员');
 
+
+-- wifi: table
+DROP TABLE IF EXISTS `wifi`;
+CREATE TABLE `wifi` (
+  `wifi_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'WIFI编号',
+  `wifi_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'WIFI名称',
+  `wifi_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'WIFI密码',
+  `wifi_create_time` datetime DEFAULT NULL,
+  `wifi_last_modify_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`wifi_id`) USING BTREE
+) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+
 SET FOREIGN_KEY_CHECKS = 1;
