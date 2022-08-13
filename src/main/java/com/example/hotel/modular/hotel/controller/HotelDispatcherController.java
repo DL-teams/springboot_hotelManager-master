@@ -59,7 +59,7 @@ public class HotelDispatcherController {
 
     @GetMapping("/admin/wifi")
     @LoginRequired
-    public String sss() {
+    public String wifi() {
         return "admin/hotel/wifi";
     }
 

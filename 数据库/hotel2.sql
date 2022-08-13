@@ -315,6 +315,8 @@ INSERT INTO `permission` VALUES (21, '房间管理', '/admin/roominfo', 18, 'fa 
 INSERT INTO `permission` VALUES (22, '预约订单管理', '/admin/orderinfo', 18, 'fa fa-reorder', '2021-01-17 22:37:00', '2021-01-17 22:37:00');
 INSERT INTO `permission` VALUES (23, '入住管理', '/admin/checkin', 18, 'fa fa-id-card', '2021-01-17 22:37:00', '2021-01-17 22:37:00');
 INSERT INTO `permission` VALUES (24, '统计分析管理', '/admin/home', 18, 'fa fa-snowflake-o', '2021-01-17 22:37:00', '2021-01-17 22:37:00');
+INSERT INTO `permission` VALUES (25, 'WIFI管理', '/admin/wifi', 18, 'fa fa-wifi', '2021-01-17 22:37:00', '2021-01-17 22:37:00');
+INSERT INTO `permission` VALUES (26, '公告管理', '/admin/announcement', 2, 'fa fa-bullhorn', '2021-01-17 22:37:00', '2021-01-17 22:37:00');
 
 -- ----------------------------
 -- Table structure for role
@@ -365,6 +367,8 @@ INSERT INTO `role_permission` VALUES (341, 1, 21);
 INSERT INTO `role_permission` VALUES (342, 1, 22);
 INSERT INTO `role_permission` VALUES (343, 1, 23);
 INSERT INTO `role_permission` VALUES (344, 1, 24);
+INSERT INTO `role_permission` VALUES (389, 1, 25);
+INSERT INTO `role_permission` VALUES (390, 1, 26);
 
 -- ----------------------------
 -- Table structure for role_user
@@ -463,6 +467,18 @@ CREATE TABLE `wifi` (
   `wifi_last_modify_time` datetime DEFAULT NULL,
   PRIMARY KEY (`wifi_id`) USING BTREE
 ) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- wifi: announcement
+DROP TABLE IF EXISTS `announcement`;
+CREATE TABLE `announcement` (
+    `announcement_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '公告编号',
+    `announcement_value` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '公告内容',
+    `announcement_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+    `announcement_last_modify_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`announcement_id`) USING BTREE
+) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `announcement` (announcement_value, announcement_create_time, announcement_last_modify_time) VALUES ('测试公告', '2022-08-13 12:11:51', '2022-08-13 12:12:18');
 
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -31,7 +31,6 @@
 <section class="content container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div class="box" style="margin-bottom: 2px">
 
             <table id="dg" title="公告列表" iconCls="icon-man" class="easyui-datagrid" width="100%"
                    url="/announcement/list"
