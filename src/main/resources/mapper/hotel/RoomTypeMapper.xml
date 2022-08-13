@@ -8,11 +8,11 @@
         <result column="area" property="area" jdbcType="INTEGER"/>
         <result column="bed_num" property="bedNum" jdbcType="INTEGER"/>
         <result column="bed_size" property="bedSize" jdbcType="VARCHAR"/>
-        <result column="winds" property="winds" jdbcType="INTEGER"/>
+        <result column="window" property="winds" jdbcType="INTEGER"/>
         <result column="rest" property="rest" jdbcType="INTEGER"/>
     </resultMap>
     <sql id="Base_Column_List">
-    type_id, type_name, price, area, bed_num, bed_size, winds,rest
+    type_id, type_name, price, area, bed_num, bed_size, `window`,rest
   </sql>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select

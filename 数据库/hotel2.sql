@@ -463,8 +463,8 @@ CREATE TABLE `wifi` (
   `wifi_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'WIFI编号',
   `wifi_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'WIFI名称',
   `wifi_password` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT 'WIFI密码',
-  `wifi_create_time` datetime DEFAULT NULL,
-  `wifi_last_modify_time` datetime DEFAULT NULL,
+  `wifi_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `wifi_last_modify_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`wifi_id`) USING BTREE
 ) ENGINE=InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
