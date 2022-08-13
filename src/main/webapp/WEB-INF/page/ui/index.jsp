@@ -21,6 +21,7 @@
                         <div class="container">
                             <div class="col-md-12 col-md-offset-0 text-center slider-text">
                                 <div class="slider-text-inner js-fullheight">
+                                    <h3 style="color: white">公告：{{announcementValue}}</h3>
                                     <div class="desc">
                                         <p><span>家庭套餐</span></p>
                                         <h2>享受家人美好时光</h2>
@@ -37,6 +38,7 @@
                         <div class="container">
                             <div class="col-md-12 col-md-offset-0 text-center slider-text">
                                 <div class="slider-text-inner js-fullheight">
+                                    <h3 style="color: white">公告：{{announcementValue}}</h3>
                                     <div class="desc">
                                         <p><span>精品单间</span></p>
                                         <h2>让你的旅途更舒适</h2>
@@ -53,6 +55,7 @@
                         <div class="container">
                             <div class="col-md-12 col-md-offset-0 text-center slider-text">
                                 <div class="slider-text-inner js-fullheight">
+                                    <h3 style="color: white">公告：{{announcementValue}}</h3>
                                     <div class="desc">
                                         <p><span>情侣套房</span></p>
                                         <h2>享受美好双人世界</h2>
@@ -450,8 +453,29 @@
 
 </div>
 <!-- END fh5co-wrapper -->
-
-
-
+<script>
+    var app = new Vue({
+        el: '#fh5co-hero',
+        data: {
+            announcementValue: ''
+        },
+        methods: {
+            // 获取公告
+            getAnnouncement() {
+                $.ajax({
+                    type: "POST",
+                    url: "/announcement/list",
+                    dateType: "json",
+                    success: (res) => {
+                        this.announcementValue =  res.rows[0].announcementValue
+                    }
+                });
+            }
+        },
+        mounted:function(){
+        this.getAnnouncement();
+    }
+    })
+</script>
 </body>
 </html>

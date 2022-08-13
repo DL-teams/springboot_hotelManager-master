@@ -16,7 +16,7 @@ public class AnnouncementServiceImpl implements AnnouncementService {
 
     @Override
     public int updateAnnouncement(Announcement announcement) {
-        return announcementMapper.updateByPrimaryKey(announcement);
+        return announcementMapper.updateByPrimaryKeySelective(announcement);
     }
 
     @Override

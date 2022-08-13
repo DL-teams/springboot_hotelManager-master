@@ -91,16 +91,19 @@
     where wifi_id = #{wifiId,jdbcType=BIGINT}
   </update>
 
-  <select id="selectWifiList" resultMap="BaseResultMap">
+  <select id="selectWifiList" resultMap="BaseResultMap" parameterType="map">
         select
-          wifi_id wifiId,
-          wifi_name wifiName,
-          wifi_create_time wifiCreateTime
+          wifi_id,
+          wifi_name,
+          wifi_password,
+          wifi_create_time,
+          wifi_last_modify_time
         from
           wifi
         order by
-          wifiCreateTime
+          wifi_create_time
         desc
+        limit #{start},#{size}
     </select>
 
   <select id="getTotalWifi" resultType="int">

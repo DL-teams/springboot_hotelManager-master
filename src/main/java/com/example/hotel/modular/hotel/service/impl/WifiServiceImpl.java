@@ -32,7 +32,7 @@ public class WifiServiceImpl implements WifiService {
     public int updateWifi(Wifi wifi) {
         Wifi before = wifiMapper.selectByPrimaryKey(wifi.getWifiId());
         Preconditions.checkNotNull(before, "需更新的Wifi不存在");
-        return wifiMapper.updateByPrimaryKey(wifi);
+        return wifiMapper.updateByPrimaryKeySelective(wifi);
     }
 
     @Override

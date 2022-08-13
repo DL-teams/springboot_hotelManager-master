@@ -56,7 +56,7 @@ public class WifiController {
         }
     }
 
-    @GetMapping("/list")
+    @PostMapping("/list")
     public DataGridDataSource<Wifi> listWifi(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page,
                              @RequestParam(value = "rows", required = false, defaultValue = "5") Integer rows) {
         PageBean pageBean = new PageBean(page, rows);

@@ -82,7 +82,7 @@
     where announcement_id = #{announcementId,jdbcType=BIGINT}
   </update>
 
-  <select id="selectAnnouncementList" resultMap="BaseResultMap">
+  <select id="selectAnnouncementList" resultMap="BaseResultMap" parameterType="map">
     select
       announcement_id,
       announcement_value,
@@ -90,6 +90,7 @@
       announcement_last_modify_time
     from
       announcement
+    limit #{start},#{size}
   </select>
 
   <select id="getTotalAnnouncement" resultType="int">

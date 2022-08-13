@@ -9,6 +9,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
+
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,7 +24,7 @@ public class AnnouncementController {
     @Resource
     private AnnouncementService announcementService;
 
-    @GetMapping("/update")
+    @PutMapping("/update")
     public JsonData updateAnnouncement(Announcement announcement) {
         int count = announcementService.updateAnnouncement(announcement);
         if (count > 0) {

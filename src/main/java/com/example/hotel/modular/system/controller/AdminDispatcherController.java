@@ -76,6 +76,13 @@ public class AdminDispatcherController {
         return "error/500";
     }
 
+    @GetMapping("/admin/announcement")
+    @LoginRequired
+//    @Operation(value = "访问应用管理界面")
+    public String adminAnnouncement() {
+        return "admin/system/announcement";
+    }
+
 
 
 }
